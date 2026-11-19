@@ -8,6 +8,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+import icons from './src/data/icons.json'
 
 export default defineConfig({
   shortcuts: [
@@ -46,18 +47,6 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  safelist: [
-    'i-ri-file-list-2-line',
-    'i-carbon-campsite',
-    'i-simple-icons-github',
-    'i-simple-icons-x',
-    'i-simple-icons-linkedin',
-    'i-simple-icons-instagram',
-    'i-simple-icons-youtube',
-    'i-simple-icons-bilibili',
-    'i-simple-icons-zhihu',
-    'i-simple-icons-sinaweibo',
-    'i-ri-github-line',
-    'i-ri-twitter-x-line',
-  ],
+  // Icon classes picked in CloudCannon live in data files, which UnoCSS doesn't scan.
+  safelist: icons.map(icon => icon.id),
 })

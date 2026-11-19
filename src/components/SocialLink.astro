@@ -1,0 +1,11 @@
+---
+// Renders inside the link's array-item host, so the Visual Editor can re-render one link.
+const { text, icon, header } = Astro.props
+
+// Header.vue swaps `icon` for the header icon on the shared objects during the build,
+// so links with a header icon show it here too.
+const shownIcon = header?.includes('i-') ? header : icon
+---
+
+<i class:list={[shownIcon]}></i>
+<editable-text data-prop="text">{text}</editable-text>

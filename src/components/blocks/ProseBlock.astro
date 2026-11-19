@@ -1,0 +1,10 @@
+---
+// The inner div keeps `.prose > :first-child` / `:last-child` from zeroing the
+// edge margins, so margins collapse across blocks as if they were siblings.
+// Attributes passed in land on the inner div, so a block can make it a region host.
+const attrs = Astro.props
+---
+
+<div class="prose !mb-0 !min-h-0">
+  <div {...attrs}><slot /></div>
+</div>

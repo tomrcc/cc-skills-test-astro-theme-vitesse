@@ -1,0 +1,495 @@
+timezone: Etc/UTC
+
+paths:
+  static: public
+  uploads: public/images
+
+markdown:
+  engine: commonmark
+  options:
+    table: true
+    strikethrough: true
+
+_editables:
+  content:
+    format: p h2 h3 h4
+    bold: true
+    italic: true
+    strike: true
+    superscript: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    blockquote: true
+    code_inline: true
+    code_block: true
+    table: true
+    image: true
+    horizontalrule: true
+    removeformat: true
+    undo: true
+    redo: true
+
+collection_groups:
+  - heading: Content
+    collections:
+      - pages
+      - blog
+  - heading: Site
+    collections:
+      - data
+
+collections_config:
+  pages:
+    path: src/content/pages
+    name: Pages
+    icon: wysiwyg
+    url: /[slug]/
+    disable_add_folder: true
+    _enabled_editors:
+      - visual
+      - content
+      - data
+    schemas:
+      default:
+        path: .cloudcannon/schemas/page.md
+        name: Page
+        icon: article
+        new_preview_url: /md-style/
+      page_builder:
+        path: .cloudcannon/schemas/page-builder.md
+        name: Page Builder
+        icon: dashboard
+        new_preview_url: /
+        _enabled_editors:
+          - visual
+          - data
+    add_options:
+      - name: Page
+        schema: default
+        icon: article
+      - name: Page Builder
+        schema: page_builder
+        icon: dashboard
+    _inputs:
+      title:
+        type: text
+        label: Title
+        comment: Shown in the browser tab and in search results
+        options:
+          required: true
+      description:
+        type: textarea
+        label: Description
+        comment: Used for search engines and link previews
+      image:
+        type: object
+        label: Image
+        options:
+          preview:
+            icon: image
+      image.src:
+        type: image
+        label: Image
+      image.alt:
+        type: text
+        label: Alt text
+      content_blocks:
+        type: array
+        label: Sections
+        options:
+          structures: _structures.content_blocks
+      _schema:
+        hidden: true
+
+  blog:
+    path: src/content/blog
+    name: Blog
+    icon: post_add
+    url: /posts/[full_slug]/
+    glob:
+      - "**/*.md"
+    disable_add_folder: true
+    _enabled_editors:
+      - visual
+      - content
+      - data
+    schemas:
+      default:
+        path: .cloudcannon/schemas/post.md
+        name: Post
+        icon: post_add
+    add_options:
+      - name: Blog post
+        schema: default
+        icon: post_add
+        editor: content
+        base_path: /
+      - name: Note
+        schema: default
+        icon: notes
+        editor: content
+        base_path: /notes
+      - name: Talk
+        schema: default
+        icon: mic
+        editor: content
+        base_path: /talks
+    _inputs:
+      title:
+        type: text
+        label: Title
+        options:
+          required: true
+      description:
+        type: textarea
+        label: Description
+        comment: Shown under the title in post lists and used for search engines
+      date:
+        type: date
+        label: Date
+        comment: The date on the page updates after saving, once the site rebuilds
+        instance_value: NOW
+        options:
+          required: true
+      duration:
+        type: text
+        label: Duration
+        comment: Reading or watching time, such as 5min
+      tag:
+        type: text
+        label: Tag
+        comment: Short label shown beside the date
+      lang:
+        type: select
+        label: Language
+        comment: Chinese posts show a 中文 marker in post lists
+        options:
+          value_key: id
+          preview:
+            text:
+              - key: name
+          values:
+            - name: English
+              id: en-US
+            - name: Chinese
+              id: zh
+      redirect:
+        type: url
+        label: Redirect link
+        comment: When set, the post list links here (in a new tab) instead of to the post
+      video:
+        type: switch
+        label: Has video
+        comment: Shows a film icon in post lists
+      draft:
+        type: switch
+        label: Draft
+        comment: Drafts are left out of the published site
+      image:
+        type: object
+        label: Image
+        options:
+          preview:
+            icon: image
+      image.src:
+        type: image
+        label: Image
+      image.alt:
+        type: text
+        label: Alt text
+
+  data:
+    path: src/data
+    name: Site settings
+    icon: settings
+    glob:
+      - site.json
+      - navigation.json
+      - social.json
+      - footer.json
+    disable_url: true
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - data
+
+data_config:
+  site:
+    path: src/data/site.json
+  navigation:
+    path: src/data/navigation.json
+  social:
+    path: src/data/social.json
+  footer:
+    path: src/data/footer.json
+  icons:
+    path: src/data/icons.json
+
+file_config:
+  - glob: src/data/site.json
+    _inputs:
+      $:
+        type: object
+        options:
+          preview:
+            icon: tune
+      author:
+        type: text
+        label: Author
+        comment: Shown in the footer copyright line
+      title:
+        type: text
+        label: Site title
+        comment: Added to every browser tab title
+        options:
+          required: true
+      description:
+        type: textarea
+        label: Site description
+        comment: Used as the RSS feed description
+      email:
+        type: email
+        label: Contact email
+      image:
+        type: object
+        label: Default share image
+        options:
+          preview:
+            icon: image
+      image.src:
+        type: image
+        label: Image
+      image.alt:
+        type: text
+        label: Alt text
+      logo:
+        type: object
+        label: Logo
+        options:
+          preview:
+            icon: image
+      logo.src:
+        type: image
+        label: Logo image
+      logo.alt:
+        type: text
+        label: Alt text
+
+  - glob: src/data/navigation.json
+    _inputs:
+      $:
+        type: object
+        options:
+          preview:
+            icon: menu
+      navLinks:
+        type: array
+        label: Header links
+        options:
+          structures: _structures.nav_links
+      blogLinks:
+        type: array
+        label: Blog tabs
+        comment: Each tab builds a list page of the posts in that folder
+        options:
+          structures: _structures.blog_tabs
+
+  - glob: src/data/social.json
+    _inputs:
+      $:
+        type: array
+        label: Social links
+        options:
+          structures: _structures.social_links
+
+  - glob: src/data/footer.json
+    _inputs:
+      $:
+        type: object
+        options:
+          preview:
+            icon: bottom_navigation
+      navLinks:
+        type: array
+        label: Footer links
+        options:
+          structures: _structures.nav_links
+      license:
+        type: object
+        label: Licence link
+        options:
+          preview:
+            icon: copyright
+      license.text:
+        type: text
+        label: Licence label
+      license.href:
+        type: url
+        label: Licence link
+
+_structures:
+  content_blocks:
+    style: modal
+    values_from_glob:
+      - /src/components/blocks/*.cloudcannon.structure-value.yml
+
+  nav_links:
+    style: modal
+    values:
+      - label: Link
+        icon: link
+        picker_preview:
+          text:
+            - Link
+          icon:
+            - link
+        preview:
+          text:
+            - key: text
+            - Link
+          subtext:
+            - key: href
+          icon:
+            - link
+        value:
+          text:
+          href:
+        _inputs:
+          text:
+            type: text
+            label: Label
+          href:
+            type: url
+            label: Link
+
+  blog_tabs:
+    style: modal
+    values:
+      - label: Blog tab
+        icon: tab
+        picker_preview:
+          text:
+            - Blog tab
+          icon:
+            - tab
+        preview:
+          text:
+            - key: text
+            - Blog tab
+          subtext:
+            - key: href
+          icon:
+            - tab
+        value:
+          text:
+          href:
+        _inputs:
+          text:
+            type: text
+            label: Label
+          href:
+            type: text
+            label: Path
+            comment: /blog for all posts, or /blog/ followed by a folder name, such as /blog/notes
+            options:
+              required: true
+              pattern: ^/blog(/[a-z0-9-]+)?$
+              pattern_message: Use /blog or /blog/folder-name
+
+  social_links:
+    style: modal
+    values:
+      - label: Social link
+        icon: share
+        picker_preview:
+          text:
+            - Social link
+          icon:
+            - share
+        preview:
+          text:
+            - key: text
+            - Social link
+          subtext:
+            - key: href
+          icon:
+            - share
+        value:
+          text:
+          href:
+          icon:
+          header:
+        _inputs:
+          text:
+            type: text
+            label: Label
+          href:
+            type: url
+            label: Link
+          icon:
+            type: select
+            label: Icon
+            comment: Shown in the home page's social links
+            options:
+              value_key: id
+              preview:
+                text:
+                  - key: name
+              values: data.icons
+          header:
+            type: select
+            label: Header icon
+            comment: Pick an icon to show this link in the site header; leave empty to keep it out
+            options:
+              allow_empty: true
+              value_key: id
+              preview:
+                text:
+                  - key: name
+              values: data.icons
+
+  projects:
+    style: modal
+    values:
+      - label: Project
+        icon: inventory_2
+        picker_preview:
+          text:
+            - Project
+          icon:
+            - inventory_2
+        preview:
+          text:
+            - key: text
+            - Project
+          subtext:
+            - key: description
+          icon:
+            - inventory_2
+        value:
+          text:
+          description:
+          icon: i-carbon-campsite
+          href:
+        _inputs:
+          text:
+            type: text
+            label: Name
+          description:
+            type: textarea
+            label: Description
+          icon:
+            type: select
+            label: Icon
+            options:
+              allow_empty: true
+              value_key: id
+              preview:
+                text:
+                  - key: name
+              values: data.icons
+          href:
+            type: url
+            label: Link

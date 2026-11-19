@@ -1,0 +1,22 @@
+label: Page heading
+icon: title
+picker_preview:
+  text:
+    - Page heading
+  icon:
+    - title
+preview:
+  text:
+    - key: text
+    - Page heading
+  icon:
+    - title
+value:
+  _type: page_heading
+  text:
+_inputs:
+  _type:
+    hidden: true
+  text:
+    type: text
+    label: Heading

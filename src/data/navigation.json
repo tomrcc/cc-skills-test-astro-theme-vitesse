@@ -1,0 +1,13 @@
+{
+  "navLinks": [
+    { "text": "Blog", "href": "/blog" },
+    { "text": "Notes", "href": "/blog/notes" },
+    { "text": "Talks", "href": "/blog/talks" },
+    { "text": "Projects", "href": "/projects" }
+  ],
+  "blogLinks": [
+    { "text": "Blog", "href": "/blog" },
+    { "text": "Notes", "href": "/blog/notes" },
+    { "text": "Talks", "href": "/blog/talks" }
+  ]
+}

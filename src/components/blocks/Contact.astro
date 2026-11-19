@@ -1,0 +1,15 @@
+---
+import ProseBlock from './ProseBlock.astro'
+import siteConfig from '@/site-config'
+
+const { text } = Astro.props
+---
+
+<ProseBlock>
+  <p>
+    <editable-text data-prop="text">{text}</editable-text>
+    <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
+      <editable-text data-prop="@data[site].email">{siteConfig.email}</editable-text>
+    </a>.
+  </p>
+</ProseBlock>

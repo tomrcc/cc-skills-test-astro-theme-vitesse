@@ -1,0 +1,17 @@
+---
+import { micromark } from 'micromark'
+import { gfm, gfmHtml } from 'micromark-extension-gfm'
+import ProseBlock from './ProseBlock.astro'
+
+const { content } = Astro.props
+
+const html = micromark(content ?? '', {
+  allowDangerousHtml: true,
+  extensions: [gfm()],
+  htmlExtensions: [gfmHtml()],
+}).replace(/<a href="(https?:)/g, '<a target="_blank" href="$1')
+---
+
+<ProseBlock data-editable="text" data-type="block" data-prop="content">
+  <Fragment set:html={html} />
+</ProseBlock>

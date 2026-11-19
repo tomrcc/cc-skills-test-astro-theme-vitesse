@@ -6,14 +6,17 @@ import '@/styles/dot.css'
 
 interface Props {
   title?: string
-  description?: string
+  description?: string | null
   image?: { src: string; alt?: string }
   pageType?: 'website' | 'article'
 }
 
-const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props
+const { image = siteConfig.image, pageType = 'website' } = Astro.props
+// Content fields arrive as null when empty, which a destructuring default skips.
+const description = Astro.props.description ?? ''
 
-const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ')
+// A page titled like the site (the home page) shows the site title once.
+const title = [...new Set([Astro.props.title, siteConfig.title])].filter(Boolean).join(' | ')
 
 const resolvedImage = image?.src
   ? {

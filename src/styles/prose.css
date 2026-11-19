@@ -234,14 +234,18 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-.prose > ul > li p {
+/* .prose-body wraps a page body inside .prose, standing in for .prose as its parent. */
+.prose > ul > li p,
+.prose-body > ul > li p {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.prose > ol > li > *:first-child {
+.prose > ol > li > *:first-child,
+.prose-body > ol > li > *:first-child {
   margin-top: 1.25em;
 }
-.prose > ol > li > *:last-child {
+.prose > ol > li > *:last-child,
+.prose-body > ol > li > *:last-child {
   margin-bottom: 1.25em;
 }
 .prose ul ul,
@@ -286,7 +290,8 @@
 .prose > :first-child {
   margin-top: 0;
 }
-.prose > :last-child {
+.prose > :last-child,
+.prose-body > :last-child {
   margin-bottom: 0;
 }
 .prose em {

@@ -1,0 +1,14 @@
+{
+  "author": "Kieran Wang",
+  "title": "Vitesse theme for Astro",
+  "description": "A Minimal, SEO-friendly portfolio and blog theme for Astro.",
+  "email": "kieranwme@gmail.com",
+  "image": {
+    "src": "/hero.jpg",
+    "alt": "Website Main Image"
+  },
+  "logo": {
+    "src": "/favicon.svg",
+    "alt": "Logo Image"
+  }
+}

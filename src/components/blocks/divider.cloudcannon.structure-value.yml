@@ -1,0 +1,17 @@
+label: Divider
+icon: horizontal_rule
+picker_preview:
+  text:
+    - Divider
+  icon:
+    - horizontal_rule
+preview:
+  text:
+    - Divider
+  icon:
+    - horizontal_rule
+value:
+  _type: divider
+_inputs:
+  _type:
+    hidden: true

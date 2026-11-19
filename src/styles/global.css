@@ -62,3 +62,9 @@ html.dark::view-transition-old(root) {
 html.dark::view-transition-new(root) {
   z-index: 1;
 }
+
+/* Project group titles are decorative for visitors; editors need to click them. */
+.cms-editor-active .project-group h2 {
+  pointer-events: auto;
+  user-select: auto;
+}

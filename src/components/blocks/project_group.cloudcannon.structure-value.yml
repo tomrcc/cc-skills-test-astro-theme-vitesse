@@ -1,0 +1,28 @@
+label: Project group
+icon: inventory_2
+picker_preview:
+  text:
+    - Project group
+  icon:
+    - inventory_2
+preview:
+  text:
+    - key: title
+    - Project group
+  icon:
+    - inventory_2
+value:
+  _type: project_group
+  title:
+  projects: []
+_inputs:
+  _type:
+    hidden: true
+  title:
+    type: text
+    label: Group title
+  projects:
+    type: array
+    label: Projects
+    options:
+      structures: _structures.projects

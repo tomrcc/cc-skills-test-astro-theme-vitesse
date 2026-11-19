@@ -1,0 +1,23 @@
+label: Social links
+icon: share
+picker_preview:
+  text:
+    - Social links
+  icon:
+    - share
+preview:
+  text:
+    - key: heading
+    - Social links
+  icon:
+    - share
+value:
+  _type: social_links
+  heading: Find me on
+_inputs:
+  _type:
+    hidden: true
+  heading:
+    type: text
+    label: Heading
+    comment: The links themselves are edited in Site settings, Social links

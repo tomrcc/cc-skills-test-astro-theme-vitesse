@@ -25,5 +25,15 @@ const { ...head } = Astro.props
       <ScrollToTop client:load />
       <Footer />
     </main>
+    <script>
+      if (window.inEditorMode) {
+        // Without this meta the ClientRouter falls back to full page loads. The Visual Editor
+        // binds regions to the file it opened, and a client-side swap would keep that binding.
+        document.querySelector('meta[name="astro-view-transitions-enabled"]')?.remove()
+        import('../cloudcannon/registerComponents').catch((error) => {
+          console.warn('Failed to load CloudCannon component registration:', error)
+        })
+      }
+    </script>
   </body>
 </html>

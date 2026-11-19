@@ -29,19 +29,33 @@ function getDate(date: string) {
 
 <BaseLayout title={title} description={description} pageType="article">
   <article class="prose">
-    <h1>{title}</h1>
+    <h1 data-editable="text" data-prop="title">{title}</h1>
     <p op-50>
       {date && <time datetime={getDate(date)}>{date.split(',')}</time>}
-      {duration && <span>· {duration}</span>}
-      {tag && <span>· {tag}</span>}
+      {
+        duration && (
+          <span>
+            · <editable-text data-prop="duration">{duration}</editable-text>
+          </span>
+        )
+      }
+      {
+        tag && (
+          <span>
+            · <editable-text data-prop="tag">{tag}</editable-text>
+          </span>
+        )
+      }
     </p>
     {
-      image && (
+      image?.src && (
         <p>
-          <img width="640" height="360" src={image.src} alt={image.alt || ''} />
+          <img width="640" height="360" src={image.src} alt={image.alt || ''} data-editable="image" data-prop="image" />
         </p>
       )
     }
-    <Content />
+    <div class="prose-body" data-editable="text" data-prop="@content">
+      <Content />
+    </div>
   </article>
 </BaseLayout>

@@ -1,0 +1,38 @@
+label: Rich text
+icon: article
+picker_preview:
+  text:
+    - Rich text
+  icon:
+    - article
+preview:
+  text:
+    - key: content
+    - Rich text
+  icon:
+    - article
+value:
+  _type: rich_text
+  content:
+_inputs:
+  _type:
+    hidden: true
+  content:
+    type: markdown
+    label: Content
+    options:
+      format: p h2 h3 h4
+      bold: true
+      italic: true
+      strike: true
+      superscript: true
+      link: true
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      code_inline: true
+      image: true
+      horizontalrule: true
+      removeformat: true
+      undo: true
+      redo: true

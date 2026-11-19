@@ -1,5 +1,9 @@
 ---
 title: Markdown Style
+description:
+image:
+  src:
+  alt:
 ---
 
 The page style in your `*.md` file.

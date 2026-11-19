@@ -1,6 +1,7 @@
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import vue from '@astrojs/vue'
+import editableRegions from '@cloudcannon/editable-regions/astro-integration'
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 
@@ -10,12 +11,17 @@ export default defineConfig({
     port: 1977,
   },
   integrations: [
+    editableRegions(),
     mdx(),
     sitemap(),
     UnoCSS({
       injectReset: true,
     }),
-    vue(),
+    vue({
+      template: {
+        compilerOptions: { isCustomElement: tag => tag.startsWith('editable-') },
+      },
+    }),
   ],
   markdown: {
     shikiConfig: {

@@ -1,0 +1,31 @@
+---
+import ProseBlock from './ProseBlock.astro'
+import SocialLink from '@/components/SocialLink.astro'
+import siteConfig from '@/site-config'
+
+const { heading } = Astro.props
+---
+
+<ProseBlock>
+  {
+    heading && (
+      <p data-editable="text" data-prop="heading">
+        {heading}
+      </p>
+    )
+  }
+  <p
+    class="flex gap-x-4 gap-y-2 flex-wrap"
+    data-editable="array"
+    data-prop="@data[social]"
+    data-component="social_link"
+  >
+    {
+      siteConfig.socialLinks.map((link) => (
+        <a aria-label={link.text} href={link.href} target="_blank" class="prose-link" data-editable="array-item">
+          <SocialLink {...link} />
+        </a>
+      ))
+    }
+  </p>
+</ProseBlock>

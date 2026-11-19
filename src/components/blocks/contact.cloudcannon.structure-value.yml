@@ -1,0 +1,23 @@
+label: Contact email
+icon: mail
+picker_preview:
+  text:
+    - Contact email
+  icon:
+    - mail
+preview:
+  text:
+    - key: text
+    - Contact email
+  icon:
+    - mail
+value:
+  _type: contact
+  text: If you have any questions, please email me at
+_inputs:
+  _type:
+    hidden: true
+  text:
+    type: text
+    label: Text before the email address
+    comment: The email address is edited in Site settings, Site

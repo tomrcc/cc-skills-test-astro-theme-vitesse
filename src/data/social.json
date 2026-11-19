@@ -1,0 +1,32 @@
+[
+  {
+    "text": "GitHub",
+    "href": "https://github.com/kieranwv/astro-theme-vitesse",
+    "icon": "i-simple-icons-github",
+    "header": "i-ri-github-line"
+  },
+  {
+    "text": "Twitter",
+    "href": "",
+    "icon": "i-simple-icons-x",
+    "header": "i-ri-twitter-x-line"
+  },
+  {
+    "text": "Linkedin",
+    "href": "",
+    "icon": "i-simple-icons-linkedin",
+    "header": ""
+  },
+  {
+    "text": "Instagram",
+    "href": "",
+    "icon": "i-simple-icons-instagram",
+    "header": ""
+  },
+  {
+    "text": "Youtube",
+    "href": "",
+    "icon": "i-simple-icons-youtube",
+    "header": ""
+  }
+]

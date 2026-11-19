@@ -1,0 +1,9 @@
+---
+import ProseBlock from './ProseBlock.astro'
+
+const { text } = Astro.props
+---
+
+<ProseBlock>
+  <h1 class="text-title" data-editable="text" data-prop="text">{text}</h1>
+</ProseBlock>

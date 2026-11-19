@@ -1,0 +1,14 @@
+[
+  { "name": "GitHub", "id": "i-simple-icons-github" },
+  { "name": "GitHub (outline)", "id": "i-ri-github-line" },
+  { "name": "X", "id": "i-simple-icons-x" },
+  { "name": "X (outline)", "id": "i-ri-twitter-x-line" },
+  { "name": "LinkedIn", "id": "i-simple-icons-linkedin" },
+  { "name": "Instagram", "id": "i-simple-icons-instagram" },
+  { "name": "YouTube", "id": "i-simple-icons-youtube" },
+  { "name": "Bilibili", "id": "i-simple-icons-bilibili" },
+  { "name": "Zhihu", "id": "i-simple-icons-zhihu" },
+  { "name": "Sina Weibo", "id": "i-simple-icons-sinaweibo" },
+  { "name": "Campsite", "id": "i-carbon-campsite" },
+  { "name": "File list", "id": "i-ri-file-list-2-line" }
+]
