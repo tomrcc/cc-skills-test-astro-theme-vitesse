@@ -4,6 +4,7 @@ import { getLinkTarget } from '@/utils/link'
 import { useWindowScroll } from '@vueuse/core'
 import { computed, onMounted, ref, unref } from 'vue'
 import ThemeToggle from './ThemeToggle.vue'
+import { EditableRegions } from '@cloudcannon/editable-regions/vue' // TEST
 
 const navLinks = siteConfig.header.navLinks || []
 
@@ -75,6 +76,8 @@ function toggleNavDrawer() {
 </script>
 
 <template>
+  <!-- TEST: root inside the client:load island -->
+  <EditableRegions tag="div">
   <header
     id="header" :class="{ 'header-bg-blur': scroll > 20 }"
     view-transition-name="site-header"
@@ -86,10 +89,10 @@ function toggleNavDrawer() {
       </a>
       <nav class="sm:flex hidden flex-wrap gap-x-6 position-initial flex-row">
         <a
-          v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
+          v-for="(link, index) in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
           nav-link :href="link.href"
         >
-          {{ link.text }}
+          <editable-text :data-prop="`@data[navigation].navLinks.${index}.text`">{{ link.text }}</editable-text>
         </a>
       </nav>
       <div sm:hidden h-full flex items-center @click="toggleNavDrawer()">
@@ -118,6 +121,7 @@ function toggleNavDrawer() {
     </a>
   </nav>
   <div class="nav-drawer-mask" @click="toggleNavDrawer()" />
+  </EditableRegions>
 </template>
 
 <style scoped>
